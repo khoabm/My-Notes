@@ -16,7 +16,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 void showError(String msg, BuildContext context) {
   FToast fToast = FToast();
   fToast.init(context);
-  fToast.showToast(
+  return fToast.showToast(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
         decoration: BoxDecoration(
