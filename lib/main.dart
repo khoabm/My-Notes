@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 
 import 'package:mynotes/constant/routes.dart';
 import 'package:mynotes/views/login_view.dart';
@@ -12,7 +13,10 @@ import 'firebase_options.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(const GetMaterialApp(
+    home: MyApp(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -31,6 +35,7 @@ class MyApp extends StatelessWidget {
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
         notesRoute: (context) => const NotesView(),
+        verifyEmailRoutes: (context) => const VerifyEmailView(),
       },
       debugShowCheckedModeBanner: false,
     );
@@ -120,8 +125,8 @@ class _NotesViewState extends State<NotesView> {
 
 void getHttp() async {
   try {
-    var response =
-        await Dio().get('https://tiktok.fullstack.edu.vn/api/users/search?q=k');
+    var response = await Dio()
+        .get('https://30f2-171-250-162-42.ap.ngrok.io/api/HangHoas?page=1');
     print(response);
   } catch (e) {
     print(e);
